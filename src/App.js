@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ListAct from "./components/ListActivity";
+import Ccv from "./components/creditCardValidator";
+import NavList from './components/NavList';
+import CountAct from './components/CountActivity';
+import PromiseAct from './components/PromiseActivity'; 
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavList/>
+        <div className = "content">
+          <Routes>
+            <Route path="/" element={<CountAct />}/>
+            <Route path="/ListActivity" element={<ListAct />}/>
+            <Route path="/creditCardValidator" element={<Ccv />}/>
+            <Route path="/PromiseActivity" element={<PromiseAct />}/>
+            <Route path="*" element={<CountAct />}/>
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
